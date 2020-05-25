@@ -1,0 +1,52 @@
+@import  "../../style/animations.scss";
+
+.item-article {
+  opacity: 0;
+  animation: fade-in ease-out 0.5s forwards;
+  margin-bottom: 3rem;
+  display: flex;
+  .image-preview {
+    height: auto;
+    object-fit: contain;
+    width: 100px;
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
+  }
+  .icon-next {
+    margin-left: 0.25rem;
+    width: 1.5rem;
+    height: 1rem;
+    margin-bottom: -0.2rem;
+  }
+
+  .container-content {
+    flex: 1;
+    margin-left: 1rem;
+  }
+
+  .date {
+    color: #666;
+    font-size: 1.2rem;
+    img {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .article-body {
+    margin-top: 0.5rem;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .link-to-article {
+    margin-top: 0.5rem;
+  }
+}
+
+

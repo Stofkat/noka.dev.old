@@ -1,0 +1,21 @@
+.article-highlighted {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 300px;
+  flex-direction: column;
+  height: 400px;
+  border: solid 1px white;
+  cursor: pointer;
+  flex: 1;
+  .image-preview {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+}

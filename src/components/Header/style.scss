@@ -1,0 +1,47 @@
+.App-header {
+  position: fixed;
+  height: 55px;
+  left: 0;
+  right: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  justify-content: space-between;
+  z-index: 999;
+  h1 {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    padding-left: 15px;
+  }
+  .container-menu-items-desktop {
+    margin-right: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  .menu-item-desktop {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    transition: font-size 0.5s;
+    height: 55px;
+    &:hover {
+      border-top: solid #fff 3px;
+      padding-top: 10px;
+      opacity: 1;
+      height: 55px;
+    }
+  }
+
+  .App-logo {
+    height: 100%;
+  }
+  .menu-item {
+    padding: 15px;
+  }
+}

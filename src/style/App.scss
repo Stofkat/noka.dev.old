@@ -1,0 +1,31 @@
+@import "./variables.scss";
+
+body {
+  background-color: $color-background;
+  color: $color-text;
+}
+.App {
+  display: flex;
+  justify-content: center;
+  .page {
+    padding-top: 55px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    max-width: 720px;
+  }
+}
+
+a {
+  color: $color-text;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}

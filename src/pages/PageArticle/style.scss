@@ -1,0 +1,27 @@
+@import "../../style/animations.scss";
+
+.page.page-article {
+  opacity: 0;
+  animation: fade-in ease-out 1.0s forwards;
+  h1 {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    @media screen and (max-width: 768px) {
+    font-size: 2rem;
+      line-height: 2rem;
+    }
+  }
+  .button-back {
+    display: block;
+    padding-top: 1rem;
+    img {
+      width: 1rem;
+      height: 1rem;
+      transform: rotate(180deg);
+      margin-right: 0.5rem;
+      margin-bottom: -0.2rem;
+    }
+  }
+}
+
+
