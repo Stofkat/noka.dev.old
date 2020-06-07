@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import ItemArticle from '../../components/ItemArticle';
 
-import { withAppState  } from '../../state/withAppState';
+import { withAppState } from '../../state/withAppState';
+
+import Articles from '../../state/actions/Articles';
+import HeaderTypewriter from '../../components/HeaderTypewriter';
+
 
 import './style.scss';
-import Articles from '../../state/actions/Articles';
+import Link from 'react-router-dom/Link';
 
 class PageBlog extends Component {
 
   componentDidMount() {
-    Articles.list('blog');
+    Articles.listAll();
   }
 
   render() {
-    const {items } = this.props.articles;
-    const length = Object.keys(items).length;
+    const { all } = this.props.articles;
+    const length = Object.keys(all).length;
     return (
-      <div className="page">
-        <h1>Noka Blog</h1>
-        <div className="container-text">
-          The latest news in internet privacy and security. This is also the place for more information about the ToffeeShare platform.
-          <br /><br />
-        </div>
-        <div className="container-text">
+      <div className="page page-blog">
+        <HeaderTypewriter>Noka Blog 📝</HeaderTypewriter>
+        <h2 > A collection of interesting new technologies, findings and experimentations.</h2>
+        <p>
+          Currently entails all of our articles, experiments and work. If you have something interesting you would like to share with us, please feel free to <Link to="/contact">send us a message</Link>
+        </p>
+        <div className="container-blog">
           {
-            Object.keys(items).map((key) => {
-              const article = items[length - 1 - key];
+            Object.keys(all).map((key) => {
+              const article = all[key];
               return (
                 <ItemArticle
                   key={key}

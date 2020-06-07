@@ -7,7 +7,10 @@ export default class AppState {
   // Initial state
   static state = {
     articles: {
-      items: {},
+      all: {},
+      work: {},
+      experiments: {},
+      highlighted: {},
     }
   };
 

@@ -1,26 +1,55 @@
-import React from 'react';
+import React, { Component } from 'react';
 import "./style.scss";
 import ArticleHighlighted from '../../components/ArticleHighlighted';
+import Articles from '../../state/actions/Articles';
+import { withAppState } from '../../state/withAppState';
+import HeaderTypewriter from '../../components/HeaderTypewriter';
 
-export default function PageHome() {
-  return (
-    <div className="page page-home">
-      <h1 className="typewriter">A digital playground</h1>
-      <h2 >Designing innovative digital products from the ground up</h2>
-      <div className="container-highlighted">
-        <ArticleHighlighted article={{
-          title: "Pyqabu",
-          summary: "Augmented reality at its best"
-        }} />
-        <ArticleHighlighted article={{
-          title: "Pyqabu",
-          summary: "Augmented reality at its best"
-        }} />
-        <ArticleHighlighted article={{
-          title: "Pyqabu",
-          summary: "Augmented reality at its best"
-        }} />
+class PageHome extends Component {
+  componentDidMount() {
+    Articles.listHighlighted();
+  }
+  render() {
+
+    const { highlighted } = this.props.articles;
+    const length = Object.keys(highlighted).length;
+
+    return (
+      <div className="page page-home">
+        <HeaderTypewriter>A digital playground 🌱</HeaderTypewriter>
+        <h2 >Designing innovative digital products from the ground up</h2>
+        <p>
+          At Noka Development we embrace the transition from experimenting with new technologies to  building creative solutions, encorporating them in our every day live.
+        </p>
+        <h3 className="header-divider">Latest creations</h3>
+        <div className="container-highlighted">
+          {
+            Object.keys(highlighted).map((key, i) => {
+              if (i < 3) {
+                const article = highlighted[key];
+                return <ArticleHighlighted article={article} index={i} />
+              } else {
+                return null;
+              }
+            })
+          }
+        </div>
+        <h3 className="header-divider">Other work</h3>
+        <div className="container-highlighted">
+          {
+            Object.keys(highlighted).map((key, i) => {
+              if (i > 2) {
+                const article = highlighted[key];
+                return <ArticleHighlighted article={article} index={i} />
+              } else {
+                return null;
+              }
+            })
+          }
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default withAppState(PageHome);

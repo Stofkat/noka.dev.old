@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import Sidebar from "react-sidebar";
 // import { slide as Menu } from 'react-burger-menu'
 import './style.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import ButtonIcon from '../buttons/ButtonIcon';
+import { ICON } from '../Icon';
 
 const MOBILE_WIDTH = 1024;
 
@@ -13,7 +16,6 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-    this.onMenuStateChange = this.onMenuStateChange.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.state = {
@@ -59,7 +61,7 @@ class Header extends Component {
   }
 
   closeMenu() {
-    this.setState({ isMenuOpen: false });
+    this.setState({ sidebarOpen: false });
   }
 
   installToDesktop() {
@@ -67,56 +69,90 @@ class Header extends Component {
     this.deferredPrompt.prompt();
   }
 
-  onMenuStateChange(state) {
-    this.setState({ isMenuOpen: state.isOpen })
-  }
 
 
   renderLogo() {
     return (
       <div className="header-logo">
-        {/* <img
-          src={require('../../assets/img/logo.png')}
-          className="App-logo"
+        <img
+          src={require('../../assets/img/logo.svg')}
+          className="logo"
           alt="logo"
-        /> */}
-        <h1 className="App-title">Noka.dev</h1>
+        />
+        <h1 className="App-title">noka.dev</h1>
       </div>
     );
   }
 
-  onSetSidebarOpen = () => {
+  onSetSideBarOpen = () => {
+    this.setState({ sidebarOpen: true });
+  }
 
+  toggleSideBar = () => {
+    this.setState({ sidebarOpen: !this.state.sidebarOpen });
+  }
+
+  renderMenuItems() {
+    return (
+      <Fragment>
+        <Link
+          onClick={() => this.closeMenu()}
+          className="menu-item menu-item"
+          to="/work">
+          Work
+        </Link>
+        <Link
+          onClick={() => this.closeMenu()}
+          className="menu-item menu-item"
+          to="/experiments">
+          Experiments
+        </Link>
+        <Link
+          onClick={() => this.closeMenu()}
+          className="menu-item menu-item"
+          to="/blog">
+          Blog
+        </Link>
+        <Link
+          onClick={() => this.closeMenu()}
+          className="menu-item menu-item"
+          to="/contact">
+          Contact
+        </Link>
+      </Fragment>
+    );
   }
   render() {
 
     return (
-      <header ref={(ref) => { this.headerRef = ref }} className="App-header">
-        <Link to="/">
-          {this.renderLogo()}
-        </Link>
-        {this.state.windowWidth > MOBILE_WIDTH &&
-          <div className="container-menu-items-desktop">
-            <div>
-              <Link onClick={() => this.closeMenu()} className="menu-item menu-item-desktop" to="/work">Work</Link>
-              <Link onClick={() => this.closeMenu()} className="menu-item menu-item-desktop" to="/experiments">Experiments</Link>
-              <Link onClick={() => this.closeMenu()} className="menu-item menu-item-desktop" to="/blog">Blog</Link>
+      <Fragment>
+        <header ref={(ref) => { this.headerRef = ref }} className="App-header">
+          <Link to="/">
+            {this.renderLogo()}
+          </Link>
+          {this.state.windowWidth > MOBILE_WIDTH &&
+            <div className="container-menu-items-desktop">
+              <div>
+                {this.renderMenuItems()}
+              </div>
             </div>
-          </div>
-        }
+          }
+          {this.state.windowWidth <= MOBILE_WIDTH &&
+            <Fragment>
+              <div className="container-buttons">
+                <ButtonIcon
+                  icon={this.state.sidebarOpen ? ICON.close : ICON.menu}
+                  onClick={this.toggleSideBar}
+                />
+              </div>
+              <div className={`sidebar ${this.state.sidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
+                {this.renderMenuItems()}
+              </div>
+            </Fragment>
 
-        {this.state.windowWidth <= MOBILE_WIDTH &&
-          <div>
-            <Sidebar
-              sidebar={<b>Sidebar content</b>}
-              open={this.state.sidebarOpen}
-              onSetOpen={this.onSetSidebarOpen}
-              styles={{ sidebar: { background: "white" } }}
-            />
-          </div>
-        }
-
-      </header>
+          }
+        </header>
+      </Fragment>
     );
   }
 }
