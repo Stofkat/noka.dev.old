@@ -21,26 +21,30 @@ class PageBlog extends Component {
     const length = Object.keys(all).length;
     return (
       <div className="page page-blog">
-        <HeaderTypewriter>Noka Blog 📝</HeaderTypewriter>
-        <h2 > A collection of interesting new technologies, findings and experimentations.</h2>
-        <p>
-          Currently entails all of our articles, experiments and work. If you have something interesting you would like to share with us, please feel free to <Link to="/contact">send us a message</Link>
-        </p>
-        <div className="container-blog">
-          {
-            Object.keys(all).map((key) => {
-              const article = all[key];
-              return (
-                <ItemArticle
-                  key={key}
-                  article={article}
-                  history={this.props.history}
-                />
-              );
-            })
-          }
+        <div className="container-small">
 
+          <HeaderTypewriter>Noka Blog 📝</HeaderTypewriter>
+          <h2 > A collection of interesting new technologies, findings and experimentations.</h2>
+          <p>
+            Currently entails all of our articles, experiments and work. If you have something interesting you would like to share with us, please feel free to <Link to="/contact">send us a message</Link>
+          </p>
+          <div className="container-blog">
+            {
+              Object.keys(all).map((key) => {
+                const article = all[key];
+                return (
+                  <ItemArticle
+                    key={key}
+                    article={article}
+                    history={this.props.history}
+                  />
+                );
+              })
+            }
+
+          </div>
         </div>
+
       </div>
     );
   }

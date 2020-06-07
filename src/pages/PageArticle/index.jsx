@@ -32,7 +32,7 @@ class PageArticle extends Component {
     return (
       <div className="page page-article">
         {article &&
-          <Fragment>
+          <div className="container-small">
             <div className="header">
               <span
                 className="button-back"
@@ -54,7 +54,7 @@ class PageArticle extends Component {
               className="article-body"
               dangerouslySetInnerHTML={{ __html: converter.makeHtml(article.body) }}
             />
-          </Fragment>
+          </div>
         }
       </div>
     );

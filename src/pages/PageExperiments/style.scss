@@ -1,16 +1,12 @@
 @import "../../style/variables.scss";
 @import "../../style/devices.scss";
 
-.page-home {
+.page-experiments {
   .header-divider {
     margin-top: 3rem;
     margin-bottom: -1rem;
   }
   .container-highlighted {
-    // display: flex;
-    // justify-content: center;
-    margin-left: -1rem;
-    margin-right: -1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     @include tablet {

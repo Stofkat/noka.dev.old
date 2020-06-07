@@ -16,36 +16,25 @@ class PageHome extends Component {
 
     return (
       <div className="page page-home">
-        <HeaderTypewriter>A digital playground 🌱</HeaderTypewriter>
-        <h2 >Designing innovative digital products from the ground up</h2>
-        <p>
-          At Noka Development we embrace the transition from experimenting with new technologies to  building creative solutions, encorporating them in our every day live.
-        </p>
-        <h3 className="header-divider">Latest creations</h3>
-        <div className="container-highlighted">
-          {
-            Object.keys(highlighted).map((key, i) => {
-              if (i < 3) {
-                const article = highlighted[key];
-                return <ArticleHighlighted article={article} index={i} />
-              } else {
-                return null;
-              }
-            })
-          }
+        <div className="container-center">
+          <HeaderTypewriter>A digital playground 🌱</HeaderTypewriter>
+          <h2 >Designing innovative digital products from the ground up</h2>
+
         </div>
-        <h3 className="header-divider">Other work</h3>
-        <div className="container-highlighted">
-          {
-            Object.keys(highlighted).map((key, i) => {
-              if (i > 2) {
+        <div className="lower-section section-divider">
+          <div className="container-center">
+            <p>
+              At Noka Development we embrace the transition from experimenting with new technologies to  building creative solutions, encorporating them in our every day live.
+        </p>
+          </div>
+          <div className="container-highlighted">
+            {
+              Object.keys(highlighted).map((key, i) => {
                 const article = highlighted[key];
                 return <ArticleHighlighted article={article} index={i} />
-              } else {
-                return null;
-              }
-            })
-          }
+              })
+            }
+          </div>
         </div>
       </div>
     );
